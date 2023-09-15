@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>{% if not signup_page %}Login{% else %}Sign Up{% endif %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet"  href="{% static 'css/users/login.css' %}">
+</head>
+<body style="background-image: url('{% static 'images/users/background.jpeg' %}');">
+    <div class="login-container">
+        <h2 class="mb-4">{% if not signup_page %}Login{% else %}Sign Up{% endif %}</h2>
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id }}" class="top-left-label">{{ field.label_tag }}</label>
+                    {{ field }}
+                         {% if field.errors %}
+            <div class="alert alert-danger">
+                {{ field.errors.as_text }}
+            </div>
+            {% endif %}
+                </div>
+            {% endfor %}
+            {% if not signup_page %}
+                <button class="btn btn-primary btn-block" type="submit">Login</button>
+                <p class="mt-3">Don't have an account? <a href="{% url 'signup' %}" class="btn-link">Sign Up</a></p>
+            {% else %}
+                <button class="btn btn-success btn-block" type="submit">Sign Up</button>
+                <p class="mt-3">Already have an account? <a href="{% url 'login' %}" class="btn-link">Login</a></p>
+            {% endif %}
+        </form>
+              {% if login_errors %}
+                <div class="alert alert-danger">
+                    {% for error in login_errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if signup_errors %}
+                    <div class="alert alert-danger">
+                        {% for error in signup_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+            {% endif %}
+    </div>
+</body>
+</html>
