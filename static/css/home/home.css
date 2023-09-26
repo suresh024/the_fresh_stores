@@ -1,0 +1,28 @@
+/* Custom CSS for Instagram-like navbar */
+body {
+    background-image: url('../../images/home/background.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hero {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Additional custom styles can be added here */
+
+.brand-logo{
+    width: 45px;
+    height: 45px;
+}
+.navbar a.nav-link {
+    color: #000;
+}

@@ -6,9 +6,9 @@
     {% load static %}
     <title>{% if not signup_page %}Login{% else %}Sign Up{% endif %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet"  href="{% static 'css/users/login.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/account/login.css' %}">
 </head>
-<body style="background-image: url('{% static 'images/users/background.jpeg' %}');">
+<body style="background-image: url('{% static 'images/account/background.jpeg' %}');">
     <div class="login-container">
         <h2 class="mb-4">{% if not signup_page %}Login{% else %}Sign Up{% endif %}</h2>
         <form method="post" class="login-form">
@@ -18,10 +18,10 @@
                     <label for="{{ field.id }}" class="top-left-label">{{ field.label_tag }}</label>
                     {{ field }}
                          {% if field.errors %}
-            <div class="alert alert-danger">
-                {{ field.errors.as_text }}
-            </div>
-            {% endif %}
+                            <div class="alert alert-danger">
+                                {{ field.errors.as_text }}
+                            </div>
+                        {% endif %}
                 </div>
             {% endfor %}
             {% if not signup_page %}

@@ -21,7 +21,8 @@ from . import views
 
 urlpatterns = [
     path('', RedirectView.as_view(url = 'home')),
-    path('home', views.home_view, name = "home"),
-    path('users/', include('users.urls')),
+    path('home', views.HomePageView.as_view(), name = "home"),
+    path('account/', include('account.urls')),
+    path('cart/', include('cart.urls')),
     path('admin/', admin.site.urls),
 ]
